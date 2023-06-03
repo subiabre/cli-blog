@@ -1,11 +1,12 @@
 <script lang="ts">
     import { CommandShell, type CommandMatch } from "$lib/commands";
+    import { help } from "$lib/commands/help";
     import ShellInput from "./ShellInput.svelte";
     import ShellOutput from "./ShellOutput.svelte";
     import ShellPrompt from "./ShellPrompt.svelte";
 
-    let commandShell = new CommandShell([]);
     let commandMatches: CommandMatch[] = [];
+    let commandShell = new CommandShell([help]);
 
     let section: HTMLElement;
     let input: ShellInput;
@@ -57,7 +58,11 @@
         <ShellPrompt>
             {match.input.raw}
         </ShellPrompt>
-        <svelte:component this={match.command.component} input={match.input} />
+        <svelte:component
+            this={match.command.component}
+            shell={match.shell}
+            input={match.input}
+        />
     {/each}
 
     <ShellPrompt>
