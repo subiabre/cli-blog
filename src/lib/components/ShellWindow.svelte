@@ -1,11 +1,11 @@
 <script lang="ts">
-    import { Shell, type ShellCommandMatch } from "$lib/commands";
+    import { CommandShell, type CommandMatch } from "$lib/commands";
     import ShellInput from "./ShellInput.svelte";
     import ShellOutput from "./ShellOutput.svelte";
     import ShellPrompt from "./ShellPrompt.svelte";
 
-    let shell = new Shell([]);
-    let matches: ShellCommandMatch[] = [];
+    let commandShell = new CommandShell([]);
+    let commandMatches: CommandMatch[] = [];
 
     let section: HTMLElement;
     let input: ShellInput;
@@ -23,7 +23,11 @@
     }
 
     function handleSubmit(event: CustomEvent) {
-        matches = [...matches, shell.match(event.detail.value)];
+        commandMatches = [
+            ...commandMatches,
+            commandShell.match(event.detail.value),
+        ];
+
         setTimeout(() => focus());
     }
 
@@ -49,11 +53,11 @@
         <slot />
     </ShellOutput>
 
-    {#each matches as match}
+    {#each commandMatches as match}
         <ShellPrompt>
             {match.input.raw}
         </ShellPrompt>
-        <svelte:component this={match.command.output} input={match.input} />
+        <svelte:component this={match.command.component} input={match.input} />
     {/each}
 
     <ShellPrompt>
