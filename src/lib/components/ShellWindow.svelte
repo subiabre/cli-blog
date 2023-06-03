@@ -52,7 +52,7 @@
 
 <style>
     section {
-        height: 100%;
+        height: calc(100% - calc(var(--shell-window-padding) * 2));
         padding: var(--shell-window-padding);
 
         overflow-y: scroll;
