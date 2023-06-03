@@ -13,7 +13,13 @@
 
     --opacity-md-decorator: 0.74;
 
+    --shell-window-padding: var(--line-height);
 
     --shell-prompt-color-user: var(--color-yellow);
     --shell-prompt-color-path: var(--color-blue);
+}
+
+body {
+    margin: 0;
+    padding: 0;
 }

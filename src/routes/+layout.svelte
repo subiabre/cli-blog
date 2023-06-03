@@ -1,5 +1,8 @@
 <script lang="ts">
-    import '../app.css';
+    import "../app.css";
+    import ShellWindow from "$lib/components/ShellWindow.svelte";
 </script>
 
-<slot />
+<ShellWindow>
+    <slot />
+</ShellWindow>
