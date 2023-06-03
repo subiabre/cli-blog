@@ -12,6 +12,7 @@ export interface CommandInput {
 }
 
 export interface CommandMatch {
+    shell: CommandShell;
     input: CommandInput;
     command: Command
 }
@@ -31,9 +32,13 @@ export class CommandShell {
     }
 
     public match(input: string): CommandMatch {
+        const parsedInput = this.parse(input);
+        const matchedCommand = this.list.find(c => c.name === parsedInput.args[0]);
+
         return {
-            input: this.parse(input),
-            command: this.list.find(c => c.name === input) || { name: "", help: [], component: CommandError }
+            shell: this,
+            input: parsedInput,
+            command: matchedCommand || { name: "", help: [], component: CommandError }
         }
     }
 }
