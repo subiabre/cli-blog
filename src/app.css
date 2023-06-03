@@ -1,0 +1,19 @@
+:root {
+    --color-text: var(--color-black);
+    --color-background: var(--color-white);
+
+    --color-white: #f8f9fa;
+    --color-black: #1e1e20;
+    --color-red: #ff5d6b;
+    --color-blue: #9aa1f9;
+    --color-green: #23fa74;
+    --color-yellow: #ffa20a;
+
+    --line-height: 1.5em;
+
+    --opacity-md-decorator: 0.74;
+
+
+    --shell-prompt-color-user: var(--color-yellow);
+    --shell-prompt-color-path: var(--color-blue);
+}
