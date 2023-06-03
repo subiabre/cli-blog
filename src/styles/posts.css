@@ -1,0 +1,35 @@
+header {
+    border-bottom: 1px dashed var(--color-text);
+}
+
+header > h1 > span {
+    color: var(--color-background);
+    background-color: var(--color-text);
+}
+
+h2::before {
+    color: #fff;
+    content: '# ';
+    opacity: var(--opacity-md-decorator);
+}
+
+h3::before {
+    content: '## ';
+    opacity: var(--opacity-md-decorator);
+}
+
+h4::before {
+    content: '### ';
+    opacity: var(--opacity-md-decorator);
+}
+
+article :not(pre) code::before {
+    content: '`';
+    opacity: var(--opacity-md-decorator);
+}
+
+article :not(pre) code::after {
+    content: '`';
+    opacity: var(--opacity-md-decorator);
+}
+

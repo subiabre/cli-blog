@@ -5,6 +5,9 @@ export async function load({ params }) {
     return {
         content,
         slug: params.slug,
-        metadata: post.metadata
+        metadata: {
+            ...post.metadata,
+            date: new Date(post.metadata.date)
+        }
     }
 }

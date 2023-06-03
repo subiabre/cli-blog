@@ -68,8 +68,6 @@ export class CommandShell {
             ]
         });
 
-        console.log(comps);
-
         return comps;
     }
 }

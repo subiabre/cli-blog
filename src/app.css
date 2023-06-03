@@ -1,3 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+@font-face {
+    font-family: 'Liberation Mono';
+    src: url('/LiberationMono-Regular.ttf');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Liberation Mono';
+    src: url('/LiberationMono-Bold.ttf');
+    font-weight: bold;
+}
+
 :root {
     --color-text: var(--color-white);
     --color-background: var(--color-black);
@@ -19,7 +33,99 @@
     --shell-prompt-color-path: var(--color-blue);
 }
 
+* {
+    text-rendering: geometricPrecision;
+}
+
 body {
     margin: 0;
     padding: 0;
+
+    font-family: 'Liberation Mono', sans-serif;
+    font-weight: normal;
+    font-size: 0.93em;
+
+    line-height: var(--line-height);
+}
+
+p {
+    margin: var(--line-height) 0;
+    line-height: var(--line-height);
+}
+
+ul {
+    list-style: square;
+}
+
+ul li,
+ol li {
+    margin: 0 0 1em 0;
+}
+
+a {
+    color: var(--color-blue);
+    background: linear-gradient(to left, transparent 50%, var(--color-blue) 50%) right;
+    background-size: 210% 100%;
+    background-color: transparent;
+    transition: background-position 0.2s ease;
+}
+
+a:hover {
+    color: var(--color-background);
+    background-position: left;
+    background-color: transparent;
+    transition: background-position 0.2s ease;
+}
+
+img {
+    width: auto;
+    max-width: 100%;
+}
+
+pre {
+    overflow-x: scroll;
+}
+
+code {
+    color: var(--color-green);
+
+    font-family: 'VT323', sans-serif;
+    font-size: 1.3em;
+    letter-spacing: 0.02em;
+}
+
+blockquote {
+    margin: 0;
+    padding: 0 0 0 2ch;
+
+    position: relative;
+    overflow: hidden;
+}
+
+blockquote::after {
+    content: ">\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>\A>";
+    white-space: pre;
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: var(--line-height);
+}
+
+blockquote>p {
+    margin: 0;
+    line-height: var(--line-height);
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Liberation Mono', monospace;
+    font-weight: bold;
+
+    line-height: var(--line-height);
+}
+
+h1 {
+    font-size: 1.9em;
 }
