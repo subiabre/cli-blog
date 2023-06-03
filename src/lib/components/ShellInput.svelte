@@ -19,6 +19,17 @@
 
     export function focus() {
         span.focus();
+        moveCursorToEnd();
+    }
+
+    function moveCursorToEnd() {
+        const range = document.createRange();
+        range.selectNodeContents(span);
+        range.collapse(false);
+
+        const selection = window.getSelection();
+        selection?.removeAllRanges();
+        selection?.addRange(range);
     }
 
     function handleSubmit() {
@@ -32,18 +43,23 @@
     }
 
     function handleKeydown(event: KeyboardEvent) {
+        event.stopImmediatePropagation();
+
         switch (event.key) {
             case "ArrowUp":
                 event.preventDefault();
                 valuePrevious();
+                setTimeout(() => moveCursorToEnd());
                 break;
             case "ArrowDown":
                 event.preventDefault();
                 valueNext();
+                setTimeout(() => moveCursorToEnd());
                 break;
             case "Tab":
                 event.preventDefault();
                 valueAutocomplete();
+                setTimeout(() => moveCursorToEnd());
                 break;
             case "Enter":
                 event.preventDefault();
