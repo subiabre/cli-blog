@@ -1,7 +1,11 @@
 <script lang="ts">
+    import { Shell, type ShellCommandMatch } from "$lib/commands";
     import ShellInput from "./ShellInput.svelte";
     import ShellOutput from "./ShellOutput.svelte";
     import ShellPrompt from "./ShellPrompt.svelte";
+
+    let shell = new Shell([]);
+    let matches: ShellCommandMatch[] = [];
 
     let section: HTMLElement;
     let input: ShellInput;
@@ -19,6 +23,8 @@
     }
 
     function handleSubmit(event: CustomEvent) {
+        matches = [...matches, shell.match(event.detail.value)];
+        setTimeout(() => focus());
     }
 
     function handleKeyDown(event: KeyboardEvent) {
@@ -42,11 +48,16 @@
     <ShellOutput>
         <slot />
     </ShellOutput>
+
+    {#each matches as match}
+        <ShellPrompt>
+            {match.input.raw}
+        </ShellPrompt>
+        <svelte:component this={match.command.output} input={match.input} />
+    {/each}
+
     <ShellPrompt>
-        <ShellInput
-            bind:this={input}
-            on:submit={handleSubmit}
-        />
+        <ShellInput bind:this={input} on:submit={handleSubmit} />
     </ShellPrompt>
 </section>
 
