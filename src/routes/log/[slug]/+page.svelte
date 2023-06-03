@@ -4,7 +4,7 @@
     export let data;
 </script>
 
-<ShellPrompt path="/log">cat {data.slug}</ShellPrompt>
+<ShellPrompt>logs {data.slug}</ShellPrompt>
 <article>
     <h1>{ data.metadata.title }</h1>
     <p>Published: {data.metadata.date}</p>

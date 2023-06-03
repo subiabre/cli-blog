@@ -1,14 +1,11 @@
 <script lang="ts">
+    import LogListing from "$lib/components/LogListing.svelte";
     import ShellPrompt from "$lib/components/ShellPrompt.svelte";
 
     export let data;
 </script>
 
-<ShellPrompt path="/log">ls</ShellPrompt>
-<ul>
-    {#each data.posts as post}
-        <li>
-            <a href="/log/{post.slug}">{post.slug}</a>
-        </li>
-    {/each}
-</ul>
+<ShellPrompt>
+    logs
+</ShellPrompt>
+<LogListing logs={data.posts} />
