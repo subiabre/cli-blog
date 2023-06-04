@@ -15,6 +15,7 @@
 <style>
     .prompt {
         display: inline;
+        line-break: anywhere;
     }
 
     .who {
